@@ -1,0 +1,61 @@
+﻿@page "/OldForm"
+@inject IDialogService Dialog
+
+<PageTitle>DudeScapes services</PageTitle>
+
+<div class="d-md-flex">
+	@*This connects to a google sheets form - so the names are going to be a little weird*@
+	<form name="jobrequest" id="jobrequest" method="post" enctype="multipart/form-data" action="https://docs.google.com/forms/d/e/1FAIpQLSdwnhiehe2L6EJ3izhEfAqA6fBmcdNsIUMElNQtcIB5t7pCAg/formResponse?" target="hidden_iframe" onsubmit="@JobFormSubmittedDialog">
+		@*submitted=true;*@
+		First Name:<br />
+		<input type="text" class="d-block pa-2" name="entry.801521237" id="entry.801521237" placeholder="First Name..." /> <br /> @*First Name*@
+		Last Name: <br />
+		<input type="text" class="d-block pa-2" name="entry.168599515" id="entry.168599515" placeholder="Last Name..." /> <br /> @*Last Name*@
+		Email Address: <br />
+		<input type="text" class="d-block pa-2" name="entry.983420431" id="entry.983420431" placeholder="your@email.com" /> <br /> @*Email Address*@
+		Phone Number: <br />
+		<input type="text" class="d-block pa-2" name="entry.911858099" id="entry.911858099" placeholder="000-111-2222" /> <br /> @*Phone Number*@
+		<label for="entry.548226005">Which Lawn Care services are you Interested in?</label> <br />
+		<select class="d-block pa-2 select-green" name="entry.548226005" id="entry.548226005" multiple>
+			@*Lawn Care Services*@
+			<option value="mowing">Mowing</option>
+			<option value="weedwacking">Weedwacking/Trimming</option>
+			<option value="hedge">Brush or Hedge Trimming</option>
+			<option value="leafcleanup">Leaf/Yard Cleanup</option>
+			<option value="weeding">Weeding</option>
+			<option value="pest">Pest Repellent</option>
+		</select> <br />
+		<label for="entry.1701733202">Which Pressure Washing Services are you Interested in?</label> <br />
+		<select class="d-block pa-2 select-blue" name="entry.1701733202" id="entry.1701733202" multiple>
+			@*Pressure Washing Services*@
+			<option value="house">House or Building Exterior</option>
+			<option value="garageorshed">Garage or Shed Exterior</option>
+			<option value="porchordeck">Porch or Deck</option>
+			<option value="fense">Fense</option>
+			<option value="gutters">Gutters</option>
+			<option value="drivewayorwalkway">Driveway or Walkway</option>
+			<option value="concrete">Concrete Surfaces / Sidewalk</option>
+			<option value="outdoorfurnature">Outdoor Furnature</option>
+			<option value="matsorrugs">Removable Car Mats or Rugs</option>
+		</select> <br />
+		<label for="entry.1915877576">Give Me Some Details - What do I Need to Know About This Job?</label> <br />
+		<textarea class="d-block pa-2" id="entry.1915877576" name="entry.1915877576" rows="10" cols="40"></textarea> <br />
+		<label for="entry.1062209384">Around When are you Looking to Have Work Done?</label> <br />
+		<input class="d-block pa-2" type="date" id="entry.1062209384" name="&entry.1062209384" /> <br />
+		Send your request: <br />
+		<div class="d-md-flex center">
+			<MudIcon Icon="@Icons.Material.Filled.Send" Color="Color.Primary"></MudIcon>
+			<input class="d-block pa-2" type="submit" value="Get DudeScaped" />
+		</div>
+	</form>
+
+	<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+</div>
+
+@code {
+	void JobFormSubmittedDialog()
+	{
+		var options = new DialogOptions { CloseOnEscapeKey = true };
+		Dialog.Show<JobFormSubmitDialog>("Your message was received!", options);
+	}
+}

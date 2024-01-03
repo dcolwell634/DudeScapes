@@ -1,0 +1,14 @@
+﻿<MudDialog>
+    <DialogContent>
+        Thanks for your job request. Someone will be in touch shortly to finalize your request and get more info!
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+
+
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+    void Submit() => MudDialog.Close(DialogResult.Ok(true));
+}

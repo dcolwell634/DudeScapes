@@ -11,20 +11,17 @@
 	<MudItem lg="12">
  		<MudGrid Justify="Justify.Center" Spacing="0">
  			<MudItem lg="6">
- 				<MudButton FullWidth="true" Color="Color.Primary" Variant="lawnCareBtnVariant" OnClick="() => {UpdateCaroselWaitTime(0);}">Lawn care</MudButton>
+ 				<MudButton FullWidth="true" Color="Color.Tertiary" Variant="lawnCareBtnVariant" OnClick="() => {UpdateCaroselWaitTime(0);}">Lawn care</MudButton>
  			</MudItem>
 			<MudItem lg="6">
- 				<MudButton FullWidth="true" Color="Color.Primary" Variant="pressureWashBtnVariant" OnClick="() => {UpdateCaroselWaitTime(1);}">Pressure washing</MudButton>
+				<MudButton FullWidth="true" Color="Color.Info" Variant="pressureWashBtnVariant" OnClick="() => {UpdateCaroselWaitTime(1);}">Pressure washing</MudButton>
  			</MudItem>
   		</MudGrid>
 	</MudItem>
-
-	<!--<MudCarousel Style="height:300px" ShowArrows="false" ShowBullets="false" EnableSwipeGesture="true" AutoCycle="true" AutoCycleTime="TimeSpan.FromSeconds(6)" SelectedIndexChanged="(e) => UpdateButtons(e) " TData="object">
-	-->
 	<!--<h3>@test</h3>-->
 	<MudItem lg="12">
 		<MudCarousel Style="height:500px" ShowArrows="false" ShowBullets="false" EnableSwipeGesture="true" AutoCycle="true" AutoCycleTime="TimeSpan.FromSeconds(timerForCarosel)" @bind-SelectedIndex:get="selectedIndex" @bind-SelectedIndex:set="UpdateButtons" TData="object">
-			<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
+			<MudCarouselItem Transition="Transition.Slide" Color="Color.Tertiary">
 				<div>
 					<MudList>
 						@{
@@ -36,7 +33,7 @@
 					</MudList>
 				</div>
 			</MudCarouselItem>
-			<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
+			<MudCarouselItem Transition="Transition.Slide" Color="Color.Info">
 				<div>
 					<MudList>
 						@{
@@ -50,102 +47,32 @@
 			</MudCarouselItem>
 		</MudCarousel>
 	</MudItem>
-	<MudItem lg="12">
-		<p>Need a job done? Get in touch:</p>
+	<MudItem lg="10">
+		<div style="text-align: center;">
+			<p id="form_section">Need some work done? Get in touch:</p>
+		</div>
 	</MudItem>
 	<MudItem lg="10">
-		<MudStack>
-			<MudCard>
-				<MudCardContent>
-					<MudText>What do you want done?</MudText>
-					<MudGrid Justify="Justify.FlexStart" Spacing="2">
-						<MudItem lg="6">
-							<MudSelect T="string" Label="Lawn Care" MultiSelection="true" Text="" @bind-SelectedValues="lawnCareSelectedValues">
-								@foreach (var lawnJob in lawnCareJobs)
-								{
-									<MudSelectItem T="string" Value="@lawnJob">@lawnJob</MudSelectItem>
-								}
-							</MudSelect>
-							@foreach (var item in lawnCareSelectedValues)
-							{
-								if (item != "select a job")
-								{
-									<MudChip Color="Color.Primary">@item</MudChip>
-								}
-							}
-						</MudItem>
-						<MudItem lg="6">
-							<MudSelect T="string" Label="Pressure Washing" MultiSelection="true" Text="" @bind-SelectedValues="pressureWashSelectedValues">
-								@foreach (var pressureJob in pressureWashJobs)
-								{
-									<MudSelectItem T="string" Value="@pressureJob">@pressureJob</MudSelectItem>
-								}
-							</MudSelect>
-							@foreach (var item in pressureWashSelectedValues)
-							{
-								if (item != "select a job")
-								{
-									<MudChip Color="Color.Primary">@item</MudChip>
-								}
-							}
-						</MudItem>
-					</MudGrid>
-					<MudItem lg="10">
-						<MudText>When do you want it done?</MudText>
-						<MudGrid Justify="Justify.Center" Spacing="2">
-							<MudItem lg="3">
-								<MudCheckBox Label="I'm not sure" @bind-Value="@imNotSureCheckboxValue"></MudCheckBox>
-								@{
-									if (imNotSureCheckboxValue)
-									{
-										<MudText Color="Color.Error">We'll set a date when we reach out to you</MudText>
-									}
-								}
-							</MudItem>
-							<MudItem lg="3" >
-								<MudDatePicker Label="On or around" @bind-Date="jobInquiryDate" Disabled="@imNotSureCheckboxValue" />
-							</MudItem>
-						</MudGrid>
-					</MudItem>
-					<MudItem lg="10">
-						<MudText>How can we reach you?</MudText>
-						<MudField>
-							<MudRadioGroup T="string">
-								<MudRadio T="string">Phone</MudRadio>
-								<MudRadio T="string">Email</MudRadio>
-								<MudRadio T="string">Phone or Email both work</MudRadio>
-							</MudRadioGroup>
-						</MudField>
-					</MudItem>
-				</MudCardContent>
-			</MudCard>
-		</MudStack>
-	</MudItem>
-	<MudItem lg="10">
-		<MudGrid>
-			<MudItem lg="2">
-				<MudText>Send us a message</MudText>
-			</MudItem>
-			<MudItem lg="3">
-				<MudButton Variant="Variant.Outlined" EndIcon="@Icons.Material.Filled.Send" Color="Color.Primary">Get DudeScaped</MudButton>
-			</MudItem>
-		</MudGrid>
+		<div style="width: auto; height: 500px; overflow: hidden;">
+			<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdwnhiehe2L6EJ3izhEfAqA6fBmcdNsIUMElNQtcIB5t7pCAg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+		</div>
 	</MudItem>
 </MudGrid>
 
 @code{
-	private int test = 0;
+	//private int test = 0;
 
 	int timerForCarosel = 10;
 	public int selectedIndex;
 	private MudBlazor.Variant lawnCareBtnVariant = Variant.Filled;
 	private MudBlazor.Variant pressureWashBtnVariant = Variant.Outlined;
-	private IList<string> lawnCareJobs = new List<string>() { "Mowing", "Weedwacking and Trimming", "Pest or Weed Control", "Raking or Leaf Cleanup", "Hedge Trimming" };
-	private IList<string> pressureWashJobs = new List<string>() { "House Exterior", "Porch or Deck", "Fenses", "Gutters", "Driveway", "Walkways", "Outdoor Furnature", "Shed or Garage", "Removable Rugs or Car Mats" };
+	private IList<string> lawnCareJobs = new List<string>() { "Mowing", "Weedwacking/Trimming", "Bush or Hedge Trimming", "Leaf/Yard Cleanup", "Weed control", "Pest Repellent" };
+	private IList<string> pressureWashJobs = new List<string>() { "House or Building Exterior", "Garage or Shed Exterior", "Porch or Deck", "Fense", "Gutters", "Driveway or Walkway", "Concrete Surfacts / Sidewalk", "Outdoor Furnature", "Removable Car Mats or Rugs" };
 	private IEnumerable<string> lawnCareSelectedValues { get; set; } = new HashSet<string>() { "select a job" };
 	private IEnumerable<string> pressureWashSelectedValues { get; set; } = new HashSet<string>() { "select a job" };
 	private bool imNotSureCheckboxValue { get; set;} = false;
 	DateTime? jobInquiryDate = DateTime.Today;
+	// private ElementReference iFrameRef;
 
 	void UpdateButtons(int value)
 	{
@@ -178,16 +105,11 @@
 		timerForCarosel = 10;
 	}
 
-	void ChangeLawnCareBtnVariant()
-	{
-		lawnCareBtnVariant = lawnCareBtnVariant.ToString() == "Filled" ? Variant.Outlined : Variant.Filled;
-		pressureWashBtnVariant = pressureWashBtnVariant.ToString() == "Outlined" ? Variant.Filled : Variant.Outlined;
+	//Not using - keeping as an example of ternary expression incase I need a reference in the future. 
+	// void ChangeLawnCareBtnVariant()
+	// {
+	// 	lawnCareBtnVariant = lawnCareBtnVariant.ToString() == "Filled" ? Variant.Outlined : Variant.Filled;
+	// 	pressureWashBtnVariant = pressureWashBtnVariant.ToString() == "Outlined" ? Variant.Filled : Variant.Outlined;
+	// }
 
-	}
-	void ChangePressureWashBtnVariant()
-	{
-		pressureWashBtnVariant = pressureWashBtnVariant.ToString() == "Outlined" ? Variant.Filled : Variant.Outlined;
-		lawnCareBtnVariant = lawnCareBtnVariant.ToString() == "Filled" ? Variant.Outlined : Variant.Filled;
-
-	}
 }

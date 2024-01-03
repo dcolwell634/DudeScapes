@@ -1,0 +1,71 @@
+﻿input, textarea {
+    outline: none;
+}
+
+    input[type="text"], input[type="date"], textarea {
+        color: #99A3BA;
+        background: #fff;
+        border: 1px solid rgb(118,106,231);
+        border-radius: 6px;
+        transition: border .1s ease;
+        &:focus {
+            border: 2px solid rgb(62,44,221);
+        }
+}
+
+input[type="submit"] {
+    background: white;
+    border: 1px solid rgba(89,74,226,1);
+    border-radius: 4px;
+    &:focus {
+    border: 2px solid rgb(62,44,221);
+    }
+    &:hover {
+        background: rgba(62,44,221,0.2);
+    }
+}
+
+select {
+    z-index: 1;
+    border-radius: 6px;
+    background: linear-gradient(to bottom, #fff 0%, #e5e5e5 100%);
+    background-color: transparent;
+    display: grid;
+    min-width: 25ch;
+    max-width: 50ch;
+    padding: 0.25em 0.5em;
+}
+
+.select-green {
+    border: 1px solid rgba(30,200,165,1);
+    scrollbar-width: auto;
+    scrollbar-color: rgb(25,169,140) rgb(42,223,187);
+    &:focus
+{
+    border: 2px solid rgb(25,169,140);
+}
+}
+.select-blue {
+    border: 1px solid rgba(33,150,243,1);
+    scrollbar-width: auto;
+    scrollbar-color: rgb(12,128,223) rgb(71,167,245);
+    &:focus
+{
+    border: 2px solid rgb(12,128,223);
+}
+}
+select[multiple] {
+    height: 7rem;
+}
+
+.scroll {
+    width: 20%;
+    height: 100px;
+    border: 1px solid grey;
+    overflow: scroll;
+    display: inline-block;
+}
+
+.center {
+    align-items: center;
+}
