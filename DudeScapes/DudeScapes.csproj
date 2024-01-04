@@ -22,4 +22,13 @@
     <Folder Include="Dialogs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\assets\mowman.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\assets\pwashman.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

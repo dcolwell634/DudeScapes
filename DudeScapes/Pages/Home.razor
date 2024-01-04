@@ -1,11 +1,11 @@
 ﻿@page "/"
 @using System.Timers
 
-<PageTitle>DudeScapes services</PageTitle>
+<PageTitle>DudeScapes</PageTitle>
 
 <MudGrid Justify="Justify.Center">
-	<MudItem lg="12">
-		<MudText Typo="Typo.h1" Align="Align.Center">DudeScapes</MudText>
+	<MudItem lg="12" xs="12">
+		<MudText Style="font-size: calc(2rem + 6vw);" Typo="Typo.h1" Align="Align.Center">DudeScapes</MudText>
 		<MudText Typo="Typo.subtitle2" Align="Align.Center">Let's DudeScape your place</MudText>
 	</MudItem>
 	<MudItem lg="12">
@@ -19,10 +19,10 @@
   		</MudGrid>
 	</MudItem>
 	<!--<h3>@test</h3>-->
-	<MudItem lg="12">
-		<MudCarousel Style="height:500px" ShowArrows="false" ShowBullets="false" EnableSwipeGesture="true" AutoCycle="true" AutoCycleTime="TimeSpan.FromSeconds(timerForCarosel)" @bind-SelectedIndex:get="selectedIndex" @bind-SelectedIndex:set="UpdateButtons" TData="object">
+	<MudItem lg="12" xs="12">
+		<MudCarousel Style="height:500px; width: 100%;" ShowArrows="false" ShowBullets="false" EnableSwipeGesture="true" AutoCycle="true" AutoCycleTime="TimeSpan.FromSeconds(timerForCarosel)" @bind-SelectedIndex:get="selectedIndex" @bind-SelectedIndex:set="UpdateButtons" TData="object">
 			<MudCarouselItem Transition="Transition.Slide" Color="Color.Tertiary">
-				<div>
+				<div class="d-flex" style="height:100%">
 					<MudList>
 						@{
 							foreach (var item in lawnCareJobs)
@@ -31,10 +31,11 @@
 							}
 						}
 					</MudList>
+					<MudImage Class="d-none d-sm-flex" Fluid="true" Style="margin-left: auto;" Src="assets/mowman.jpg"></MudImage>
 				</div>
 			</MudCarouselItem>
 			<MudCarouselItem Transition="Transition.Slide" Color="Color.Info">
-				<div>
+				<div class="d-flex" style="height:100%">
 					<MudList>
 						@{
 							foreach (var item in pressureWashJobs)
@@ -43,6 +44,7 @@
 							}
 						}
 					</MudList>
+					<MudImage Class="d-none d-sm-flex" Fluid="true" Style="margin-left: auto;" Src="assets/pwashman.jpg"></MudImage>
 				</div>
 			</MudCarouselItem>
 		</MudCarousel>
